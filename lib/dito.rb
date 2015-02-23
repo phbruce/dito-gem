@@ -1,3 +1,5 @@
+require "helpers/symbolize_keys"
+
 require "dito/version"
 require "dito/configuration"
 require "dito/domains"

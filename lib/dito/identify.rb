@@ -1,40 +1,46 @@
 module Dito
   def self.identify user = {}
-    user.symbolize_keys!
+    Dito.symbolize_keys!(user)
     
     params = {}
 
-    if user[:facebook_id] || user[:fb_id]
+    if user[:facebook_id].present?
       network_name = 'facebook'
-      social_id = user[:facebook_id] || user[:fb_id]
+      id = user[:facebook_id]
       params[:network_name] = 'fb'
-      params[:user_data] = { data: user[:data] } if user[:data]
-    elsif user[:google_plus_id] or user[:plus_id]
+    elsif user[:google_plus_id].present?
       network_name = 'plus'
-      social_id = user[:google_plus_id] || user[:plus_id]
+      id = user[:google_plus_id]
       params[:network_name] = 'pl'
-      params[:user_data] = { data: user[:data] } if user[:data]
-    elsif user[:twitter_id]
+    elsif user[:twitter_id].present?
       network_name = 'twitter'
-      social_id = user[:twitter_id]
+      id = user[:twitter_id]
       params[:network_name] = 'tw'
-      params[:user_data] = { data: user[:data] } if user[:data]
-    else #portal
+    elsif user[:id].present?
       network_name = 'portal'
-      social_id = user[:id]
-      email = user[:email]
+      id = user[:id]
       params[:network_name] = 'pt'
-      params[:user_data] = {}.merge user
-
-      params[:user_data].delete(:id) if params[:user_data] && params[:user_data][:id]
+    else
+      return { error: { message: 'Missing the user id param. See the available options here: http://developers.dito.com.br/docs/sdks/ruby' } }
     end
 
-    params[:user_data][:data] = params[:user_data][:data].to_json if params[:user_data] && params[:user_data][:data]
+    params[:user_data] = {}
 
-    params[:access_token] = user[:access_token] if user[:access_token]
-    params[:signed_request] = user[:signed_request] if user[:signed_request]
-    params[:id_token] = user[:id_token] if user[:id_token]
+    if network_name == 'portal'
+      params[:user_data].merge!(user)
+      params[:user_data].delete(:id)
+    else
+      params[:user_data][:data] = user[:data]
+    end
 
-    Dito::Request.post 'login', "/users/#{network_name}/#{social_id}/signup", params
+    if params[:user_data][:data].present? && params[:user_data][:data].is_a?(Hash)
+      params[:user_data][:data] = params[:user_data][:data].to_json
+    end
+
+    params[:access_token] = user[:access_token] if user[:access_token].present?
+    params[:signed_request] = user[:signed_request] if user[:signed_request].present?
+    params[:id_token] = user[:id_token] if user[:id_token].present?
+
+    Dito::Request.post 'login', "/users/#{network_name}/#{id}/signup", params
   end
 end
