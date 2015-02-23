@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = "dito"
   spec.version       = Dito::VERSION
   spec.authors       = ["Marcos Nogueira"]
-  spec.email         = ["marcosnogueiraalves@gmail.com"]
-  spec.summary       = %q{Summary}
-  spec.description   = %q{description}
-  spec.homepage      = ""
+  spec.email         = ["marcos.nogueira@dito.com.br"]
+  spec.summary       = %q{Gem para integração com a plataforma da Dito}
+  spec.description   = %q{Essa gem tem como objetivo automatizar a integração com a Rest API da Dito.}
+  spec.homepage      = "http://dito.com.br/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -20,6 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency "faraday"
-  spec.add_development_dependency "faraday_middleware"
+  spec.add_runtime_dependency "faraday"
+  spec.add_runtime_dependency "faraday_middleware"
 end
