@@ -45,7 +45,7 @@ Exemplo:
 
     # Ou
 
-    dito.identify({
+    Dito.identify({
       facebook_id: '123141312312',
       access_token: 'XXXXXXXXXX',
       data: {
@@ -56,7 +56,7 @@ Exemplo:
 
 ### Criando eventos
 
-O método ``dito.track`` é usado para trackear o comportamento dos usuários na forma de eventos em sua aplicação.
+O método ``Dito.track`` é usado para trackear o comportamento dos usuários na forma de eventos em sua aplicação.
 
 O nó data é reservado para as informações do evento. Fique a vontade para enviar quantas informações quiser.
 
