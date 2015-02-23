@@ -23,7 +23,7 @@ module Dito
       id = user[:id]
       params[:network_name] = 'pt'
     else
-      return { error: { message: 'Missing the user id param. See the available options here: http://developers.dito.com.br/docs/sdks/ruby' } }
+      return { :error => { :message => 'Missing the user id param. See the available options here: http://developers.dito.com.br/docs/sdks/ruby' } }
     end
 
     params[:user_data] = {}
