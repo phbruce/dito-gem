@@ -20,7 +20,7 @@ Ou instale manualmente:
 
 ### Configurando sua aplicação
 
-Adicione o código abaixo no ambiente de configuração da sua aplicação:
+Adicione o código abaixo em cada ambiente de configuração da sua aplicação.
 
     Dito.configure do |c|
       c.api_key = 'SUA_API_KEY'
@@ -32,6 +32,7 @@ As chaves da sua aplicação podem ser encontradas na área de configuração do
 ### Enviando seus usuários
 
 O método ``Dito.identify`` é usado para enviar os usuários da sua aplicação para a plataforma da Dito.
+
 O nó data é reservado para as informações do usuários relativas a sua aplicação. Fique a vontade para enviar quantas informações quiser.
 
 Exemplo:
@@ -50,6 +51,23 @@ Exemplo:
       data: {
         cpf: '101.032.076-95',
         cargo: 'Desenvolvedor'
+      }
+    });
+
+### Criando eventos
+
+O método ``dito.track`` é usado para trackear o comportamento dos usuários na forma de eventos em sua aplicação.
+
+O nó data é reservado para as informações do evento. Fique a vontade para enviar quantas informações quiser.
+
+Exemplo:
+
+    Dito.track({
+      action: 'nome-do-evento',
+      revenue: 5.99, // Opcional
+      data: {
+        propriedade_1: 'valor da propriedade 1',
+        propriedade_2: 'valor da propriedade 2'
       }
     });
 
