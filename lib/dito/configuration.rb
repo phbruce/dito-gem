@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 module Dito
   class Configuration
     attr_accessor :api_key, :secret

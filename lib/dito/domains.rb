@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 module Dito
   def self.domains module_name
     domains = {

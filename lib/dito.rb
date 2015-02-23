@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 require "helpers/symbolize_keys"
 
 require "dito/version"

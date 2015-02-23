@@ -52,7 +52,7 @@ Exemplo:
         cpf: '101.032.076-95',
         cargo: 'Desenvolvedor'
       }
-    });
+    })
 
 ### Criando eventos
 
@@ -63,13 +63,16 @@ O nó data é reservado para as informações do evento. Fique a vontade para en
 Exemplo:
 
     Dito.track({
-      action: 'nome-do-evento',
-      revenue: 5.99, // Opcional
-      data: {
-        propriedade_1: 'valor da propriedade 1',
-        propriedade_2: 'valor da propriedade 2'
+      id: Digest::SHA1.hexdigest('marcos.nogueira@dito.com.br'),
+      event: {
+        action: 'nome-do-evento',
+        revenue: 5.99, // Opcional
+        data: {
+          propriedade_1: 'valor da propriedade 1',
+          propriedade_2: 'valor da propriedade 2'
+        }
       }
-    });
+    })
 
 ## Contributing
 

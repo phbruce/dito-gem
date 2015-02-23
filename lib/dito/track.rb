@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 module Dito
   def self.track options = {}
     Dito.symbolize_keys!(options)

@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 module Dito
   def self.identify user = {}
     Dito.symbolize_keys!(user)
