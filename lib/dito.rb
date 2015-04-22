@@ -1,12 +1,14 @@
 # -*- encoding : utf-8 -*-
 
 require "helpers/symbolize_keys"
+require "helpers/generate_credentials"
 
 require "dito/version"
 require "dito/configuration"
 require "dito/domains"
 require "dito/request"
 require "dito/identify"
+require "dito/alias"
 require "dito/track"
 
 module Dito
