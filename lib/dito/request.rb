@@ -24,7 +24,7 @@ module Dito
     end
 
     def self.make_request module_name, path, params = {}, headers = {}, method = "get"
-      conn = Faraday.new(:url => Dito.domains(module_name)) do |faraday|
+      conn = Faraday.new(url: Dito::Domain.new(module_name).url) do |faraday|
         faraday.request :url_encoded # form-encode POST params
         faraday.response :json, :content_type => 'application/json'
         faraday.adapter Faraday.default_adapter # make requests with Net::HTTP

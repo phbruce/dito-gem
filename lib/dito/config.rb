@@ -1,12 +1,14 @@
 # -*- encoding : utf-8 -*-
 
 module Dito
-  class Configuration
+  module Config
+    extend self
+
     attr_accessor :api_key, :secret
     attr_writer :environment
 
     def environment
-      @environment || 'production'
+      @environment ||= 'production'
     end
   end
 end
