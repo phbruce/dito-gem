@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Dito do
-  let(:api_key) { rand(9999999999) }
-  let(:secret) { rand(9999999999) }
+  let(:api_key) { rand(9_999_999_999) }
+  let(:secret) { rand(9_999_999_999) }
 
   before(:each) do
     Dito.configure do |config|
