@@ -1,11 +1,13 @@
 # -*- encoding : utf-8 -*-
 
 require 'helpers/symbolize_keys'
+require 'yaml'
 
 require 'dito/version'
 require 'dito/config'
 require 'dito/domain'
 require 'dito/request'
+require 'dito/service'
 require 'dito/identify'
 require 'dito/track'
 

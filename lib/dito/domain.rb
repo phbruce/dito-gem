@@ -3,30 +3,20 @@
 module Dito
   # lib/dito/domain.rb
   class Domain
-    DITO_MODULES = {
-      notification: 'notification', analytics: 'analytics', badge: 'badge',
-      comments: 'comments', ranking: 'ranking', events: 'events', js: 'js',
-      share: 'share', login: 'login'
-    }.freeze
+    DOMAIN_PATH = File.expand_path('../../../config/domains.yml', __FILE__)
 
-    def initialize(module_name)
-      @module_name = module_name.to_sym
+    def initialize(service_name)
+      @service_name = service_name
     end
 
     def url
-      mount_url if DITO_MODULES[@module_name].present?
+      domain % @service_name if Service.new(@service_name).valid?
     end
 
     private
 
-    def mount_url
-      url = 'https://%s%s.plataformasocial.com.br'
-
-      case Dito::Config.environment
-      when 'production' then format(url, @module_name, '')
-      when 'development', 'test', 'staging'
-        format(url, @module_name, '.dev')
-      end
+    def domain
+      YAML.load_file(DOMAIN_PATH)[Config.environment]
     end
   end
 end

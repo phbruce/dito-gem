@@ -1,0 +1,1 @@
+services: ['notification', 'analytics', 'badge', 'comments', 'ranking', 'events', 'js', 'share', 'login']

@@ -1,0 +1,4 @@
+development: 'https://%s.dev.plataformasocial.com.br'
+production: 'https://%s.plataformasocial.com.br'
+staging: 'https://%s.staging.plataformasocial.com.br'
+test: 'https://%s.test.plataformasocial.com.br'
